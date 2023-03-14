@@ -43,13 +43,13 @@ fun loginScreen() {
     var passwordState = rememberSaveable {
         mutableStateOf("")
     }
-
-
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -58,15 +58,12 @@ fun loginScreen() {
             ) {
                 Surface(
                     modifier = Modifier
-                        .width(140.dp)
-                        .height(50.dp),
+                        .width(120.dp)
+                        .height(40.dp),
                     color = Color(206, 6, 240),
                     shape = RoundedCornerShape(0.dp, 0.dp, 0.dp, 16.dp),
                 ) {}
             }
-            Spacer(
-                modifier = Modifier.height(100.dp)
-            )
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -134,28 +131,69 @@ fun loginScreen() {
                 )
                 Column(
                     modifier = Modifier
-                    .fillMaxWidth(),
+                        .fillMaxWidth(),
                     horizontalAlignment = Alignment.End
                 ) {
                     Button(
                         onClick = { /*TODO*/ },
                         modifier = Modifier
-                            .width(120.dp)
+                            .width(135.dp)
                             .height(50.dp),
-                        colors = ButtonDefaults.buttonColors(Color(206,6,240)),
+                        colors = ButtonDefaults.buttonColors(Color(206, 6, 240)),
+                        shape = RoundedCornerShape(16.dp)
+                    ) {
+                        Row(
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.sign_in).uppercase(),
+                                color = Color.White,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(700),
+                            )
+                            Icon(
+                                painter = painterResource(id = R.drawable.baseline_arrow_forward_24),
+                                contentDescription = null,
+                                tint = Color.White
+                            )
+                        }
+                    }
+                    Spacer(
+                        modifier = Modifier.height(30.dp)
+                    )
+                    Row(
+                        modifier = Modifier
+                            .wrapContentWidth(),
                     ) {
                         Text(
-                            text = stringResource(id = R.string.sign_in),
-                            color = Color.White
+                            text = stringResource(id = R.string.account),
+                            color = Color(160, 156, 156),
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight(400),
                         )
-                        Icon(
-                            painter = painterResource(id = R.drawable.baseline_arrow_forward_24),
-                            contentDescription = "",
-                            tint = Color.White
+                        Spacer(
+                            modifier = Modifier.width(5.dp)
+                        )
+                        Text(
+                            text = stringResource(id = R.string.sign_up),
+                            color = Color(206, 6, 240),
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight(700),
                         )
                     }
                 }
-
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+            ) {
+                Card(
+                    modifier = Modifier
+                        .width(120.dp)
+                        .height(40.dp),
+                    backgroundColor = Color(206, 6, 240),
+                    shape = RoundedCornerShape(0.dp, 16.dp, 0.dp, 0.dp),) {
+                }
             }
         }
     }
